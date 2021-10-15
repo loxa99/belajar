@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -28,3 +29,11 @@ Route::get('/produk/{nama?}/{qty?}', function ($nama = "N/A", $qty = 0) {
      echo "<p>Jual <strong>$nama</strong>. Stok saat ini: $qty</p>"; });
 
 Route::fallback(function () { return "Wah kamu nyasar, turn back!"; });
+
+Route::get('/about', function () {
+     $teks = 'Kampus terbaik se-galaksi';
+     $dosen = ["John Doe", "Mike", "Don Key", "Sam Sung", ];
+     return view('universitas.about')
+     ->with('teks',$teks)
+      ->with('dosen',$dosen);
+     });
